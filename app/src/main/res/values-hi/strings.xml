@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">24/7 Live Studio</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">डैशबोर्ड</string>
+    <string name="nav_playlist">प्लेलिस्ट</string>
+    <string name="nav_platforms">प्लेटफॉर्म</string>
+    <string name="nav_settings">सेटिंग्स</string>
+    <string name="nav_logs">लॉग्स</string>
+
+    <!-- Dashboard -->
+    <string name="status_live">लाइव</string>
+    <string name="status_offline">ऑफलाइन</string>
+    <string name="status_connecting">कनेक्ट हो रहा है</string>
+    <string name="status_reconnecting">पुनः कनेक्ट हो रहा है</string>
+    <string name="btn_start_live">लाइव प्रसारण शुरू करें</string>
+    <string name="btn_stop_live">प्रसारण रोकें</string>
+    <string name="btn_preparing">स्ट्रीम तैयार हो रही है...</string>
+    <string name="dashboard_duration">स्ट्रीम अवधि</string>
+    <string name="dashboard_upload_speed">अपलोड स्पीड</string>
+    <string name="dashboard_network">इंटरनेट स्थिति</string>
+    <string name="dashboard_current_video">वर्तमान वीडियो</string>
+    <string name="dashboard_no_video">प्लेलिस्ट में कोई वीडियो नहीं है</string>
+    <string name="dashboard_target_platforms">लाइव गंतव्य</string>
+    <string name="platform_youtube">YouTube Live</string>
+    <string name="platform_facebook">Facebook Live</string>
+    <string name="platform_both">एक साथ दोनों (Multistream)</string>
+    <string name="dashboard_quick_tip">24/7 लाइव के लिए फोन को चार्जर और स्थिर Wi-Fi से जोड़कर रखें।</string>
+
+    <!-- Playlist -->
+    <string name="playlist_title">वीडियो प्लेलिस्ट</string>
+    <string name="playlist_empty_title">प्लेलिस्ट खाली है</string>
+    <string name="playlist_empty_desc">24/7 निरंतर लाइव प्रसारण शुरू करने के लिए फोन स्टोरेज से MP4 वीडियो चुनें।</string>
+    <string name="btn_add_videos">वीडियो जोड़ें</string>
+    <string name="playlist_loop_all">प्लेलिस्ट ऑटो-रिपीट (24/7 लूप)</string>
+    <string name="playlist_loop_all_desc">प्लेलिस्ट समाप्त होने पर फिर से शुरू से चलाएं।</string>
+    <string name="playlist_resume">अंतिम स्थिति से फिर शुरू करें</string>
+    <string name="playlist_resume_desc">रुकावट के बाद पिछली वीडियो स्थिति याद रखें।</string>
+    <string name="playlist_items_count">%1$d वीडियो</string>
+    <string name="playlist_clear_all">प्लेलिस्ट साफ करें</string>
+
+    <!-- Platforms -->
+    <string name="platforms_title">लाइव प्लेटफॉर्म्स</string>
+    <string name="platforms_subtitle">अपने फोन पर RTMP/RTMPS क्रेडेंशियल्स सुरक्षित रूप से सेट करें।</string>
+    <string name="youtube_config_title">YouTube Live कॉन्फ़िगरेशन</string>
+    <string name="facebook_config_title">Facebook Live कॉन्फ़िगरेशन</string>
+    <string name="label_rtmp_url">RTMP / RTMPS सर्वर URL</string>
+    <string name="label_stream_key">स्ट्रीम की (Stream Key)</string>
+    <string name="hint_stream_key">अपनी स्ट्रीम की यहाँ पेस्ट करें</string>
+    <string name="btn_save_credentials">क्रेडेंशियल्स सहेजें</string>
+    <string name="btn_test_connect">कनेक्शन जांचें</string>
+    <string name="status_connected">कनेक्टेड</string>
+    <string name="status_disconnected">डिस्कनेक्टेड</string>
+    <string name="status_error">त्रुटि (Error)</string>
+    <string name="security_note">स्ट्रीम की Android KeyStore से एन्क्रिप्ट रहती हैं और कहीं शेयर नहीं होतीं।</string>
+
+    <!-- Settings -->
+    <string name="settings_title">स्ट्रीमिंग सेटिंग्स</string>
+    <string name="settings_quality_header">वीडियो और ऑडियो गुणवत्ता</string>
+    <string name="settings_resolution">वीडियो रेजोल्यूशन</string>
+    <string name="settings_framerate">फ्रेम रेट (FPS)</string>
+    <string name="settings_video_bitrate">वीडियो बिटरेट</string>
+    <string name="settings_audio_bitrate">ऑडियो बिटरेट</string>
+    <string name="settings_quality_preset_1080p">1080p FHD (4000 kbps, 30fps)</string>
+    <string name="settings_quality_preset_720p">720p HD (2500 kbps, 30fps) - अनुशंसित</string>
+    <string name="settings_quality_preset_480p">480p SD (1200 kbps, 30fps)</string>
+    <string name="settings_recommended">स्पीड सिफारिश</string>
+    <string name="settings_speed_recommendation_desc">आपकी अपलोड स्पीड के अनुसार 24/7 लाइव के लिए 720p HD सबसे उपयुक्त है।</string>
+
+    <string name="settings_background_header">24/7 बैकग्राउंड स्थिरता</string>
+    <string name="settings_wakelock">स्क्रीन बंद होने पर भी चालू रखें (Wake Lock)</string>
+    <string name="settings_wakelock_desc">स्क्रीन ऑफ होने पर फोन को स्लीप मोड में जाने से रोकता है।</string>
+    <string name="settings_autoreconnect">नेटवर्क टूटने पर ऑटो-पुनः कनेक्ट</string>
+    <string name="settings_autoreconnect_desc">इंटरनेट ड्रॉप होने पर स्वचालित रूप से पुनः कनेक्ट करने का प्रयास करता है।</string>
+    <string name="settings_battery_btn">बैटरी ऑप्टिमाइज़ेशन अक्षम करें</string>
+    <string name="settings_battery_desc">Android कुछ घंटों बाद बैकग्राउंड ऐप्स बंद कर सकता है। निर्बाध 24/7 प्रसारण के लिए बैटरी प्रतिबंध हटाएं।</string>
+    <string name="settings_disclaimer_title">24/7 लाइव सूचना</string>
+    <string name="settings_disclaimer_body">24/7 निरंतर लाइव प्रसारण के लिए सक्रिय इंटरनेट, लगातार चार्जिंग और बैकग्राउंड अनुमति आवश्यक है। केवल अपनी स्वामित्व वाली सामग्री प्रसारित करें।</string>
+
+    <!-- Logs -->
+    <string name="logs_title">स्ट्रीमिंग लॉग्स</string>
+    <string name="logs_clear">लॉग्स साफ करें</string>
+    <string name="logs_copy">सभी लॉग्स कॉपी करें</string>
+    <string name="logs_filter_all">सभी</string>
+    <string name="logs_filter_youtube">YouTube</string>
+    <string name="logs_filter_facebook">Facebook</string>
+    <string name="logs_filter_errors">केवल त्रुटियां</string>
+    <string name="logs_empty">अभी कोई लॉग नहीं है। प्रसारण शुरू करने पर कनेक्शन इवेंट दिखेंगे।</string>
+    <string name="logs_copied_toast">लॉग्स क्लिपबोर्ड पर कॉपी हो गए</string>
+
+    <!-- Language -->
+    <string name="settings_language">Language / भाषा</string>
+    <string name="lang_english">English</string>
+    <string name="lang_hindi">हिन्दी (Hindi)</string>
+
+    <!-- Notification -->
+    <string name="notification_channel_name">24/7 लाइव स्ट्रीम</string>
+    <string name="notification_channel_desc">सक्रिय बैकग्राउंड स्ट्रीमिंग स्थिति और नियंत्रण।</string>
+    <string name="notification_streaming_title">24/7 Live Studio: लाइव प्रसारण चालू है</string>
+    <string name="notification_action_stop">स्ट्रीम रोकें</string>
+</resources>

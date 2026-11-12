@@ -1,0 +1,32 @@
+{
+  "name": "24/7 Live Studio",
+  "short_name": "Live Studio",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0C14",
+  "theme_color": "#0A0C14",
+  "orientation": "any",
+  "description": "24/7 continuous live video streaming studio to YouTube Live and Facebook Live with simultaneous multistreaming.",
+  "categories": ["video", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

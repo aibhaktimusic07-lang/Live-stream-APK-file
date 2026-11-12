@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>24/7 Live Studio</title>
+
+  <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0A0C14">
+  <meta name="background-color" content="#0A0C14">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="24/7 Live Studio">
+  <meta name="application-name" content="24/7 Live Studio">
+
+  <!-- Icons & Favicon -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Offline Notice -->
+  <div id="offline-banner" class="offline-banner">
+    ⚠️ आप ऑफलाइन हैं (Offline Mode)। पहले से सेव किया डेटा और सेटिंग्स उपलब्ध हैं।
+  </div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand">
+      <img src="/icons/icon-192.png" alt="24/7 Live Studio Logo" class="brand-icon">
+      <div>
+        <div class="brand-title">24/7 Live Studio</div>
+        <div class="brand-subtitle" id="sub-header-text">YouTube & Facebook Multistreaming</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <!-- PWA Install Button (Top) -->
+      <button id="btn-install-header" class="btn-install-header" style="display: none;">
+        <span>📲</span>
+        <span id="btn-install-header-text">Install App</span>
+      </button>
+
+      <!-- Language Toggle -->
+      <button id="btn-lang-toggle" class="btn-lang">EN</button>
+    </div>
+  </header>
+
+  <!-- PWA Install Prompt Banner (Visible on mobile browser when installable) -->
+  <div id="pwa-install-banner" class="pwa-banner" style="display: none;">
+    <div class="pwa-banner-left">
+      <div class="pwa-banner-icon">📱</div>
+      <div>
+        <div class="pwa-banner-title" id="banner-title">होम स्क्रीन पर इंस्टॉल करें</div>
+        <div class="pwa-banner-desc" id="banner-desc">बिना ब्राउज़र के फुल स्क्रीन में 24/7 लाइव स्टूडियो चलाएं।</div>
+      </div>
+    </div>
+    <button id="btn-install-banner" class="btn-install-banner">
+      इंस्टॉल करें
+    </button>
+  </div>
+
+  <!-- Main App Content -->
+  <main class="container">
+
+    <!-- Hero Live Broadcast Studio Card -->
+    <section class="hero-card">
+      <div class="hero-top">
+        <div id="live-badge" class="live-badge standby">
+          <span class="dot"></span>
+          <span id="live-badge-text">STANDBY</span>
+        </div>
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--neon-blue);">720p HD • 30FPS</span>
+      </div>
+
+      <div class="stream-duration" id="stream-timer">00:00:00</div>
+
+      <!-- Now Playing Box -->
+      <div class="now-playing-box">
+        <div class="now-playing-header">
+          <span id="label-now-playing">CURRENT VIDEO</span>
+          <span id="track-counter">Track 1 of 3</span>
+        </div>
+        <div class="track-name" id="current-video-title">Devotional_Bhajan_Continuous_Loop.mp4</div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="track-progress" style="width: 45%;"></div>
+        </div>
+      </div>
+
+      <!-- Telemetry Info -->
+      <div class="telemetry-row">
+        <div class="telemetry-item">
+          <div class="telemetry-label" id="label-speed">UPLOAD SPEED</div>
+          <div class="telemetry-value" id="val-speed">2450 kbps</div>
+        </div>
+        <div class="telemetry-item">
+          <div class="telemetry-label" id="label-network">NETWORK</div>
+          <div class="telemetry-value" id="val-network" style="color: var(--success-green);">Online (Wi-Fi)</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls-row">
+        <button id="btn-start-stream" class="btn-start-live">
+          ▶ <span id="btn-start-text">START LIVE BROADCAST</span>
+        </button>
+        <button id="btn-stop-stream" class="btn-stop-live">
+          ⏹ <span id="btn-stop-text">STOP BROADCAST</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Platform Status Cards -->
+    <section class="platforms-grid">
+      <div class="platform-card">
+        <div class="platform-card-header">
+          <span class="platform-title youtube">YouTube Live</span>
+          <span class="platform-status-pill active" id="yt-pill">READY</span>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-secondary);" id="yt-endpoint">rtmp://a.rtmp.youtube.com/live2</div>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-card-header">
+          <span class="platform-title facebook">Facebook Live</span>
+          <span class="platform-status-pill active" id="fb-pill">READY</span>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-secondary);" id="fb-endpoint">rtmps://live-api-s.facebook.com:443/rtmp/</div>
+      </div>
+    </section>
+
+    <!-- Credentials Setup Accordion -->
+    <section style="margin-top: 20px;">
+      <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 10px;" id="title-config">Stream Credentials (क्रेडेंशियल्स)</h3>
+      <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 16px; padding: 16px;">
+        <label style="font-size: 0.8rem; color: var(--text-secondary); display: block; margin-bottom: 4px;">YouTube Stream Key</label>
+        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+          <input type="password" id="input-yt-key" placeholder="••••••••••••••••" style="flex: 1; background: var(--surface-variant); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; color: #FFF;">
+          <button id="btn-show-yt" style="background: var(--surface-variant); border: 1px solid var(--border-color); color: var(--text-secondary); padding: 0 12px; border-radius: 10px; cursor: pointer;">👁️</button>
+        </div>
+
+        <label style="font-size: 0.8rem; color: var(--text-secondary); display: block; margin-bottom: 4px;">Facebook Stream Key</label>
+        <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+          <input type="password" id="input-fb-key" placeholder="••••••••••••••••" style="flex: 1; background: var(--surface-variant); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; color: #FFF;">
+          <button id="btn-show-fb" style="background: var(--surface-variant); border: 1px solid var(--border-color); color: var(--text-secondary); padding: 0 12px; border-radius: 10px; cursor: pointer;">👁️</button>
+        </div>
+
+        <button id="btn-save-keys" style="width: 100%; background: var(--surface-variant); border: 1px solid var(--neon-blue); color: var(--neon-blue); font-weight: 700; padding: 12px; border-radius: 10px; cursor: pointer;">
+          💾 क्रेडेंशियल्स सहेजें (Save Credentials)
+        </button>
+      </div>
+    </section>
+
+    <!-- Native APK Direct Download Card -->
+    <section class="apk-download-card">
+      <div>
+        <div style="font-weight: 800; font-size: 0.95rem; color: var(--text-primary);" id="apk-card-title">Android Native APK Download</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);" id="apk-card-desc">फोन में 24/7 बैकग्राउंड सर्विस व वेक-लॉक के साथ सीधा इंस्टॉल करें।</div>
+      </div>
+      <a href="/app-debug.apk" download="247-Live-Studio.apk" class="btn-download-apk" id="btn-apk-text">
+        ⬇️ APK (28 MB)
+      </a>
+    </section>
+
+  </main>
+
+  <!-- PWA Installation Instructions Modal (When browser prompt is unavailable) -->
+  <div id="install-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button id="btn-close-modal" class="modal-close">&times;</button>
+      <div class="modal-title" id="modal-title">ऐप को Android में कैसे इंस्टॉल करें?</div>
+      <p style="font-size: 0.85rem; color: var(--text-secondary);" id="modal-desc">
+        यदि ऑटोमैटिक प्रॉम्प्ट नहीं दिख रहा है, तो इन आसान चरणों का पालन करें:
+      </p>
+
+      <div class="modal-steps">
+        <div class="modal-step">
+          <div class="step-num">1</div>
+          <div class="step-text" id="step-1">
+            ब्राउज़र के ऊपर दाईं ओर <strong>तीन बिंदुओं (⋮) मेन्यू</strong> पर टैप करें।
+          </div>
+        </div>
+        <div class="modal-step">
+          <div class="step-num">2</div>
+          <div class="step-text" id="step-2">
+            मेन्यू में से <strong>"Install app"</strong> या <strong>"Add to Home screen" (होम स्क्रीन पर जोड़ें)</strong> चुनें।
+          </div>
+        </div>
+        <div class="modal-step">
+          <div class="step-num">3</div>
+          <div class="step-text" id="step-3">
+            <strong>"Install"</strong> पर क्लिक करें। ऐप आपके फोन की होम स्क्रीन पर बिना ब्राउज़र बार के फुल स्क्रीन में आ जाएगा।
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 16px; text-align: center;">
+        <button id="btn-modal-got-it" style="background: var(--neon-blue); color: #000; border: none; font-weight: 800; padding: 12px 24px; border-radius: 12px; cursor: pointer; width: 100%;">
+          समझ गया (Got it)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/app.js"></script>
+</body>
+</html>

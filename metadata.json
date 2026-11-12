@@ -1,0 +1,8 @@
+{
+  "name": "Remix 24/7 Live Studio",
+  "description": "Continuous 24/7 video live broadcasting studio to YouTube and Facebook Live with simultaneous multistreaming, playlist loop, and foreground service.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
